@@ -16,7 +16,7 @@ public interface PasswordValidator {
         }
 
         // 대문자, 소문자 각각 체크
-        return password.matches("[a-z]+" && password.matches("[A-Z]+"));
+        return password.matches("[a-z]+") && password.matches("[A-Z]+");
     }
 
     /**

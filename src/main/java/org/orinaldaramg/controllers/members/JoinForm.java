@@ -1,4 +1,4 @@
-package org.orinaldaramg.cotrollers.members;
+package org.orinaldaramg.controllers.members;
 
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;

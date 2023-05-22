@@ -2,7 +2,7 @@ package org.orinaldaramg.models.member;
 
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.orinaldaramg.cotrollers.members.JoinForm;
+import org.orinaldaramg.controllers.members.JoinForm;
 import org.orinaldaramg.entities.Member;
 import org.orinaldaramg.repositories.MemberRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;

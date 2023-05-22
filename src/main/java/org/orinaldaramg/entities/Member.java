@@ -10,7 +10,7 @@ import lombok.*;
         @Index(name="idx_member_email", columnList = "email")
 })
 public class Member extends BaseEntity {
-    @Id @Generated
+    @Id @GeneratedValue
     private Long userNo; // 회원번호
 
     @Column(length = 40, nullable = false, unique = true)
