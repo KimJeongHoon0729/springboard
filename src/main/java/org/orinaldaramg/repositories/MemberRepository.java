@@ -1,6 +1,7 @@
 package org.orinaldaramg.repositories;
 
 import org.orinaldaramg.entities.Member;
+import org.orinaldaramg.entities.QMember;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 

@@ -10,8 +10,13 @@ public interface PasswordValidator {
      *  true : 대소문자 상관없이 포함되는 패턴
      */
     default boolean alphaCheck(String password, boolean caseIncentive){
+        if(caseIncentive){ // 대소문자 구분없이 체크
+            return password.matches("[a-zA-Z]+");
 
-        return false;
+        }
+
+        // 대문자, 소문자 각각 체크
+        return password.matches("[a-z]+" && password.matches("[A-Z]+"));
     }
 
     /**
@@ -22,7 +27,7 @@ public interface PasswordValidator {
      */
 
     default boolean numberCheck(String password){
-        return false;
+        return password.matches("\\d+"); // [0-9]+
     }
 
     /**
@@ -33,6 +38,7 @@ public interface PasswordValidator {
 
     default boolean specialCharsCheck(String password){
 
-        return false;
+        //return password.matches("[`~!#$%\\^&\\*()-_+=]+");
+        return true;
     }
 }
