@@ -2,6 +2,7 @@ package org.orinaldaramg.models.member;
 
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.orinaldaramg.commons.constants.Role;
 import org.orinaldaramg.controllers.members.JoinForm;
 import org.orinaldaramg.entities.Member;
 import org.orinaldaramg.repositories.MemberRepository;
@@ -21,6 +22,7 @@ public class MemberSaveService {
 
     public void save(JoinForm joinForm){
         Member member = new ModelMapper().map(joinForm,Member.class);
+        member.setRoles(Role.USER);
         member.setUserPw(passwordEncoder.encode(joinForm.getUserPw()));
 
         memberRepository.saveAndFlush(member);

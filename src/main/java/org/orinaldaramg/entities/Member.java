@@ -2,6 +2,7 @@ package org.orinaldaramg.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.orinaldaramg.commons.constants.Role;
 
 @Entity @Data @Builder
 @NoArgsConstructor @AllArgsConstructor
@@ -30,5 +31,9 @@ public class Member extends BaseEntity {
 
     @Lob
     private String termsAgree; // 약관 동의 내역
+
+    @Enumerated(EnumType.STRING)
+    @Column(length=10, nullable = false)
+    private Role roles = Role.USER;
     
 }
