@@ -27,6 +27,7 @@ public class CommonController {
         model.addAttribute("path", URL);
         model.addAttribute("message", e.getMessage());
         model.addAttribute("exception", e);
+        e.printStackTrace();
 
         return "error/common";
     }

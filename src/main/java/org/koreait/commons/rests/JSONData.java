@@ -14,6 +14,6 @@ public class JSONData<T> {
     private HttpStatus status = HttpStatus.OK; // 200
     private String message;
     private T data;
-    
+
 
 }
