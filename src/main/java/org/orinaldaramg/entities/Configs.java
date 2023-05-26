@@ -4,7 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity @Data
-public class CodeValue {
+public class Configs {
+
     @Id
     private String code;
 
