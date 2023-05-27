@@ -31,7 +31,7 @@ public class ConfigController {
         }
 
 
-        model.addAttribute("configForm", configForm);
+        model.addAttribute("configForm", configForm == null ? new ConfigForm() : configForm );
         return "admin/config";
     }
 
