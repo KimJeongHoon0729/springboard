@@ -4,8 +4,10 @@ package org.orinaldaramg.controllers.admins;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.orinaldaramg.commons.CommonException;
 import org.orinaldaramg.commons.MenuDetail;
 import org.orinaldaramg.commons.Menus;
+import org.orinaldaramg.models.board.config.BoardConfigSaveService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -19,6 +21,7 @@ import java.util.List;
 public class BoardController {
 
     private final HttpServletRequest request;
+    private final BoardConfigSaveService configSaveService;
     /**
      * 게시판 목록
      *
@@ -49,16 +52,26 @@ public class BoardController {
         return "admin/board/config";
 
     }
-    
+
     @PostMapping("/save")
-    public String save(@Valid BoardForm boardForm, Errors errors, Model model){
+    public String save(@Valid BoardForm boardForm, Errors errors, Model model) {
         String mode = boardForm.getMode();
         commonProcess(model, mode != null && mode.equals("update") ? "게시판 수정" : "게시판 등록");
-        
-        
+
+        try {
+            configSaveService.save(boardForm, errors);
+        } catch (CommonException e) {
+            errors.reject("BoardConfigError", e.getMessage());
+        }
+
+        if (errors.hasErrors()) {
+            return "admin/board/config";
+        }
+
+
         return "redirect:/admin/board"; // 게시판 목록
     }
-    
+
     private void commonProcess(Model model, String title){
         String URI = request.getRequestURI();
         // 서브 메뉴 처리
