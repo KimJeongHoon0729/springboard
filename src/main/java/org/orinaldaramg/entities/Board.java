@@ -64,6 +64,19 @@ public class Board extends BaseMemberEntity {
     @Column(length = 20, nullable = false)
     private String skin = "default"; // 게시판 스킨
 
+    /**
+     * 게시판 분류 목록
+     *
+     * @return
+     */
+
+    public String[] getCategories(){
+        if(category == null) {
+            return null;
+        }
+        String[] categories = category.replace("\\r", "").trim().split("\\n");
+        return categories;
+    }
 
     
 }
