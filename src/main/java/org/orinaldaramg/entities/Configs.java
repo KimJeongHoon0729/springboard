@@ -5,11 +5,11 @@ import lombok.Data;
 
 @Entity @Data
 public class Configs {
-
     @Id
-    @Column(length = 45)
+    @Column(length=45)
     private String code;
 
     @Lob
     private String value;
+
 }

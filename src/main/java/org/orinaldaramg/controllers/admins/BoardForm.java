@@ -1,6 +1,5 @@
 package org.orinaldaramg.controllers.admins;
 
-
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,33 +24,41 @@ public class BoardForm {
 
     private boolean showViewList; // 게시글 하단 목록 노출
 
-
     private String category; // 게시판 분류
 
 
-    private String listAccessRole = "ALL"; // 목록 접근 권한
+    private String listAccessRole = "ALL";
 
-    private String viewAccessRole = "ALL"; // 글보기 접근 권한
+    // 글보기 접근 권한
+    private String ViewAccessRole = "ALL";
 
-    private String writeAccessRole = "ALL"; // 글쓰기 접근 권한
+    // 글쓰기 접근 권한
+    private String writeAccessRole = "ALL";
 
-    private String replyAccessRole = "ALL"; // 답글 접근 권한
+    // 답글 접근 권한
+    private String replyAccessRole = "ALL";
 
-    private String commentAccessRole = "ALL"; // 댓글 접근 권한
+    // 댓글 접근 권한
+    private String commentAccessRole = "ALL";
 
-    private boolean useEditor; // 에디터 사용 여부
+    // 에디터 사용 여부
+    private boolean useEditor;
 
-    private boolean useAttachFile; // 파일 첨부 사용 여부
+    // 파일 첨부 사용여부
+    private boolean useAttachFile;
 
-    private boolean useAttachImage; // 이미지 첨부 사용 여부
+    // 이미지 첨부 사용여부
+    private boolean useAttachImage;
 
-    private String locationAfterWriting = "view"; // 글작성 후 이동
+    // 글작성 후 이동
+    private String locationAfterWriting = "view";
 
-    private boolean useReply; // 답글 사용 여부
+    // 답글 사용 여부
+    private boolean useReply;
 
-    private boolean useComment; // 댓글 사용 여부
+    // 댓글 사용 여부
+    private boolean useComment;
 
-    private String skin = "default"; // 게시판 스킨
-
-
+    // 게시판 스킨
+    private String skin = "default";
 }

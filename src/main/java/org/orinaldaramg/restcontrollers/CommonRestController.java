@@ -9,11 +9,10 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice("org.orinaldaramg.restcontrollers")
 public class CommonRestController {
-
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<JSONData<Object>> errorHandler(Exception e){
+    public ResponseEntity<JSONData<Object>> errorHandler(Exception e) {
         HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
-        if(e instanceof CommonException){
+        if (e instanceof CommonException) {
             CommonException commonException = (CommonException) e;
             status = commonException.getStatus();
         }

@@ -1,6 +1,5 @@
 package org.orinaldaramg.commons;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

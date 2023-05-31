@@ -8,7 +8,6 @@
         <title>
             <th:block th:if="${pageTitle != null}" th:text="${pageTitle + ' ::'}"></th:block>
             <th:block th:text="${siteConfig.siteTitle}"></th:block>
-
         </title>
         <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
         <link rel="stylesheet" type="text/css" th:href="@{/css/front/style.css?v={v}(v=${siteConfig.cssJsVersion})}">

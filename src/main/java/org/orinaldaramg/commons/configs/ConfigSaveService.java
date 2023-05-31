@@ -13,23 +13,21 @@ public class ConfigSaveService {
 
     private final ConfigsRepository repository;
 
-    public<T> void save(String code, T t){
+    public <T> void save(String code, T t) {
 
         Configs configs = repository.findById(code).orElseGet(Configs::new);
 
         ObjectMapper om = new ObjectMapper();
         String value = null;
-
         try {
             value = om.writeValueAsString(t);
-        } catch (JsonProcessingException e){
-            e.printStackTrace();
+        } catch (JsonProcessingException e) {
+           e.printStackTrace();
         }
 
         configs.setCode(code);
         configs.setValue(value);
 
         repository.saveAndFlush(configs);
-
     }
 }

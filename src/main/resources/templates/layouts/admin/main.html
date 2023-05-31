@@ -6,9 +6,8 @@
     <meta name="_csrf_header" th:content="${_csrf.headerName}">
     <meta name="description" th:content="${siteConfig.siteDescription}">
     <title>
-        <th:block th:if="${pageTitle != null}" th:text="${pageTitle + '::'}"></th:block>
+        <th:block th:if="${pageTitle != null}" th:text="${pageTitle + ' ::'}"></th:block>
         <th:block th:text="${siteConfig.siteTitle}"></th:block>
-
     </title>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
     <link rel="stylesheet" type="text/css" th:href="@{/css/admin/style.css?v={v}(v=${siteConfig.cssJsVersion})}">
@@ -28,7 +27,6 @@
         <th:block th:replace="~{admin/commons/_submenu::menus}"></th:block>
         <section layout:fragment="content"></section>
     </section>
-
 </main>
 <footer th:replace="~{outlines/admin/footer::common}"></footer>
 <iframe name="ifrmProcess" class="dn"></iframe>

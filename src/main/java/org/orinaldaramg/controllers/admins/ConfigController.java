@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
 @Log
 @Controller
 @RequestMapping("/admin/config")
@@ -22,21 +21,16 @@ public class ConfigController {
     private String code = "siteConfig";
 
     @GetMapping
-    public String config(Model model){
+    public String config(Model model) {
         commonProcess(model);
         ConfigForm configForm = infoService.get(code, ConfigForm.class);
 
-        if(configForm != null){
-            log.info(configForm.toString());
-        }
-
-
-        model.addAttribute("configForm", configForm == null ? new ConfigForm() : configForm );
+        model.addAttribute("configForm", configForm == null ? new ConfigForm() : configForm);
         return "admin/config";
     }
 
     @PostMapping
-    public String configPs(ConfigForm configForm, Model model){
+    public String configPs(ConfigForm configForm, Model model) {
         commonProcess(model);
 
         saveService.save(code, configForm);
@@ -45,11 +39,11 @@ public class ConfigController {
 
         return "admin/config";
     }
-    
-    private void commonProcess(Model model){
+
+    private void commonProcess(Model model) {
         String title = "사이트 설정";
         String menuCode = "config";
-        model.addAttribute("pageTitle",title);
+        model.addAttribute("pageTitle", title);
         model.addAttribute("title", title);
         model.addAttribute("menuCode", menuCode);
     }

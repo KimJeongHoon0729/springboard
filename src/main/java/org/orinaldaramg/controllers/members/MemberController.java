@@ -28,6 +28,7 @@ public class MemberController {
     @PostMapping("/join")
     public String joinPs(@Valid JoinForm joinForm, Errors errors, Model model) {
         commonProcess(model);
+
         joinValidator.validate(joinForm, errors);
 
         if (errors.hasErrors()) {
@@ -45,7 +46,7 @@ public class MemberController {
         return "member/login";
     }
 
-    private void commonProcess(Model model){
+    private void commonProcess(Model model) {
         model.addAttribute("pageTitle", "회원가입");
     }
 }

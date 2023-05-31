@@ -1,17 +1,17 @@
 package org.orinaldaramg.controllers.admins;
 
-
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
 import org.orinaldaramg.commons.CommonException;
 import org.orinaldaramg.commons.MenuDetail;
 import org.orinaldaramg.commons.Menus;
-import org.orinaldaramg.commons.constants.Role;
 import org.orinaldaramg.entities.Board;
 import org.orinaldaramg.models.board.config.BoardConfigInfoService;
+import org.orinaldaramg.models.board.config.BoardConfigListService;
 import org.orinaldaramg.models.board.config.BoardConfigSaveService;
+import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -27,15 +27,19 @@ public class BoardController {
     private final HttpServletRequest request;
     private final BoardConfigSaveService configSaveService;
     private final BoardConfigInfoService boardConfigInfoService;
+    private final BoardConfigListService boardConfigListService;
+
     /**
      * 게시판 목록
      *
      * @return
      */
-
     @GetMapping
-    public String index(Model model){
+    public String index(@ModelAttribute BoardSearch boardSearch, Model model) {
         commonProcess(model, "게시판 목록");
+
+        Page<Board> data = boardConfigListService.gets(boardSearch);
+        model.addAttribute("items", data.getContent());
 
         return "admin/board/index";
     }
@@ -44,18 +48,18 @@ public class BoardController {
      * 게시판 등록
      * @return
      */
-
     @GetMapping("/register")
-    public String register(@ModelAttribute BoardForm boardForm, Model model){
+    public String register(@ModelAttribute BoardForm boardForm, Model model) {
         commonProcess(model, "게시판 등록");
+
         return "admin/board/config";
     }
 
     @GetMapping("/{bId}/update")
-    public String update(@PathVariable String bId, Model model){
+    public String update(@PathVariable String bId, Model model) {
         commonProcess(model, "게시판 수정");
 
-        Board board = boardConfigInfoService.get(bId,true);
+        Board board = boardConfigInfoService.get(bId, true);
         BoardForm boardForm = new ModelMapper().map(board, BoardForm.class);
         boardForm.setMode("update");
         boardForm.setListAccessRole(board.getListAccessRole().toString());
@@ -66,9 +70,7 @@ public class BoardController {
 
         model.addAttribute("boardForm", boardForm);
 
-
         return "admin/board/config";
-
     }
 
     @PostMapping("/save")
@@ -90,18 +92,20 @@ public class BoardController {
         return "redirect:/admin/board"; // 게시판 목록
     }
 
-    private void commonProcess(Model model, String title){
+    private void commonProcess(Model model, String title) {
         String URI = request.getRequestURI();
+
         // 서브 메뉴 처리
         String subMenuCode = Menus.getSubMenuCode(request);
+
+        subMenuCode = title.equals("게시판 수정") ? "register" : subMenuCode;
+
         model.addAttribute("subMenuCode", subMenuCode);
 
         List<MenuDetail> submenus = Menus.gets("board");
         model.addAttribute("submenus", submenus);
 
-
         model.addAttribute("pageTitle", title);
         model.addAttribute("title", title);
-
     }
 }
