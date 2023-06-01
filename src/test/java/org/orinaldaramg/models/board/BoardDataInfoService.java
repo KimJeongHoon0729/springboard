@@ -1,13 +1,14 @@
 package org.orinaldaramg.models.board;
 
 import lombok.RequiredArgsConstructor;
-import org.orinaldaramg.controllers.boards.BoardForm;
+import org.orinaldaramg.entities.BoardData;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class BoardDataSaveService {
-    public void save(BoardForm boardForm) {
+public class BoardDataInfoService {
 
+    public BoardData get(Long id){
+        return null;
     }
 }
