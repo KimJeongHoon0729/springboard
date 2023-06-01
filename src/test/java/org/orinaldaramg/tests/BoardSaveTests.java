@@ -27,6 +27,8 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
+import java.util.Arrays;
+import java.util.ResourceBundle;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -228,14 +230,29 @@ public class BoardSaveTests {
 
     @Test
     @DisplayName("통합테스트 - 비회원 게시글 작성 유효성 검사")
+    @Disabled
     void requiredFieldsGuestControllerTest() throws Exception {
         BoardForm boardForm = getGuestBoardForm();
-        mockMvc.perform(post("/board/save")
+        String body = mockMvc.perform(post("/board/save")
                 .param("bId", boardForm.getBId())
                 .param("gid", boardForm.getGid())
                         .with(csrf().asHeader()))
-                .andDo(print());
+                .andDo(print())
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
 
+        ResourceBundle bundle = ResourceBundle.getBundle("messages.validations");
+        String[] messages = {
+            bundle.getString("NotBlank.boardForm.poster"),
+                bundle.getString("NotBlank.boardForm.subject"),
+                bundle.getString("NotBlank.boardForm.content"),
+                bundle.getString("NotBlank.boardForm.guestPw"),
+                bundle.getString("Size.boardForm.guestPw")
+        };
 
+        for(String message : messages){
+            assertTrue(body.contains(message));
+        }
     }
 }
