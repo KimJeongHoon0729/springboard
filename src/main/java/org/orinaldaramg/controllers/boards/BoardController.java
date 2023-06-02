@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.orinaldaramg.commons.CommonException;
 import org.orinaldaramg.commons.MemberUtil;
 import org.orinaldaramg.entities.Board;
+import org.orinaldaramg.entities.BoardData;
+import org.orinaldaramg.models.board.BoardDataInfoService;
 import org.orinaldaramg.models.board.BoardDataSaveService;
 import org.orinaldaramg.models.board.config.BoardConfigInfoService;
 import org.springframework.http.HttpStatus;
@@ -23,6 +25,7 @@ import java.util.List;
 public class BoardController {
 
     private final BoardConfigInfoService boardConfigInfoService;
+    private final BoardDataInfoService infoService;
     private final BoardDataSaveService saveService;
     private final BoardFormValidator formValidator;
     private final HttpServletResponse response;
@@ -95,7 +98,13 @@ public class BoardController {
 
     @GetMapping("/view/{id}")
     public String view(@PathVariable Long id, Model model) {
-        commonProcess(null, "view", model);
+        BoardData boardData = infoService.get(id);
+        Board board = boardData.getBoard();
+
+        commonProcess(board.getBId(), "view", model);
+
+        model.addAttribute("boardData", boardData);
+        model.addAttribute("board", board);
 
         return "board/view";
     }
