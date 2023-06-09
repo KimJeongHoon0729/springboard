@@ -10,10 +10,7 @@
 * 타임리프 레이아웃 템플릿 완성 
 * 스프링 시큐리티 설정
 	- 회원가입 엔티티, 레포지토리
-	
-		
 
-* <a href="https://drive.google.com/drive/folders/1Eu3wl9GIVdIxFUaxLTGVIAgqpr3ZsCZ0?usp=share_link">동영상 강의</a>
 
 ## 3일차
 * 스프링 시큐리티 설정
@@ -45,8 +42,7 @@
 	
 * 공통 오류 페이지
 	- @ExceptionHandler, @ControllerAdvice, @RestControllerAdvice
-	
-* <a href="https://drive.google.com/drive/folders/1zrk-y8QL5K8pUa7uJnKUfWY_AzHHlFRv?usp=share_link">동영상 강의</a>
+
 
 ## 4일차
 * 공통 오류 페이지 처리 
@@ -62,15 +58,12 @@
 			
 	- 게시판 설정
 
-* <a href="https://drive.google.com/drive/folders/1zTuyIVdIy99BLSqrN5p1cDODtbmVUU7Q?usp=share_link">동영상 강의</a>
-
 
 ## 5일차
 * 관리자페이지 
 	- 사이트 설정 
 	- 게시판 설정
 
-* <a href="https://drive.google.com/drive/folders/1BUuxfIcPO32JGlaC9XZ-Zd_kG7KZ3eaN?usp=share_link">동영상 강의</a>
 
 ## 6일차
 * 관리자페이지 
@@ -79,7 +72,6 @@
 		- BoardData : 게시글 데이터
 		
 	- 게시판 목록
-* <a href="https://drive.google.com/drive/folders/12Jz7WuVcgG7epBAe3n_JQhdJ35GS39uN?usp=share_link">동영상 강의</a>
 
 ## 7일차
 * 관리자페이지 
@@ -87,13 +79,12 @@
 
 * 프론트페이지 
 	- 게시글 쓰기
-* <a href="https://drive.google.com/drive/folders/1jYTOep60XCkm0_B4M4MMkTdyKc76tgjQ?usp=share_link">동영상 강의</a>
+
 
 ## 8일차
 * 프론트페이지 
 	- 게시글 쓰기
 	- 게시글 보기
-* <a href="https://drive.google.com/drive/folders/1OCTZ0FyKgg_svNs_H6KmSon7Z_CNa_id?usp=drive_link">동영상 강의</a>
 	
 	
 ## 9일차 
@@ -101,11 +92,9 @@
 	- 게시글 보기
 	- 파일업로드
 	
-* <a href="https://drive.google.com/drive/folders/1PX33O0f1cMDI3IuaUuM1LPGKwpxHFKq9?usp=drive_link">동영상 강의</a>
 
 ## 10일차 
 * 프론트페이지 
 	-게시글 보기
 	- 파일업로드
 	
-* <a href="https://drive.google.com/drive/folders/1nRs2vpJZgz-EA9v4tg-xSyI6AdpkKZ1y?usp=drive_link">동영상 강의</a>
